@@ -6,7 +6,7 @@ var server = http.createServer(function (req, res) {
     console.log('req method>>', req.method)
 })
 
-server.listen(7000, function (err, done) {
+server.listen(7070, function (err, done) {
     if (err) {
         console.log('Server failed to connect');
 

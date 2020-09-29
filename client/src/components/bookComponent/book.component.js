@@ -25,10 +25,10 @@ export default class BookComponent extends Component {
     //       <p>{item.volumeInfo.title}</p>
 
     //     ))
-    let data = this.props.incomingData;
-    console.log("ncoming>>>", data);
+    // let data = this.props.incomingData;
+    // console.log("ncoming>>>", data);
 
-    console.log("props>>>", this.props.books);
+    // console.log("props>>>", this.props.books);
 
     //  this.props.incomingData.forEach(item=>(
     //   console.log('the items are>>>>',item.volumeInfo.title)
