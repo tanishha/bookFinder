@@ -4,6 +4,7 @@ import axios from "axios";
 import AlertDialog from "./../../util/details";
 import notification from "../../util/notification";
 import { Loader } from "../loader/loader.component";
+import Save from "../../util/save";
 
 const apiKey = "AIzaSyBf9U8DPeKp7vec9R6D2xohuSirRrGC4tg";
 
@@ -34,14 +35,13 @@ export default class MainComponent extends Component {
       .get(
         "https://www.googleapis.com/books/v1/volumes?q=" +
           changedSearch +
-          "&maxresults=30&key=" +
+          "&maxresults=10&key=" +
           apiKey
       )
       .then((response) => {
         this.setState({
           books: response.data.items,
         });
-        console.log(this.state.books);
         this.state.books.forEach((books) =>
           console.log("books>>>", books.volumeInfo.title)
         );
@@ -51,6 +51,7 @@ export default class MainComponent extends Component {
         this.setState({});
       });
   };
+
   render() {
     let content =
       this.state.books === undefined ? (
@@ -63,7 +64,7 @@ export default class MainComponent extends Component {
                 <img
                   className="card-img-top"
                   src={books.volumeInfo.imageLinks.thumbnail}
-                  alt="Card image cap"
+                  alt="Card"
                 />
               </div>
 
@@ -76,11 +77,12 @@ export default class MainComponent extends Component {
                   image={books.volumeInfo.imageLinks.thumbnail}
                   previewLink={books.volumeInfo.previewLink}
                 ></AlertDialog>
-                <button className="btn btn-secondary">
-                  {" "}
-                  Save
-                  <i className="far fa-bookmark"></i>
-                </button>
+
+                <Save
+                  title={books.volumeInfo.title}
+                  publisher={books.volumeInfo.publisher}
+                  previewLink={books.volumeInfo.previewLink}
+                ></Save>
               </div>
             </div>
           </div>
@@ -106,9 +108,7 @@ export default class MainComponent extends Component {
                   required
                 />
               </div>
-              {/* <div className="input-field second-wrap">
-            <input id="location" type="text" placeholder="location" />
-          </div> */}
+
               <div className="input-field third-wrap">
                 <button className="btn-search" type="submit">
                   Search
@@ -117,7 +117,7 @@ export default class MainComponent extends Component {
             </div>
           </form>
         </div>
-        <div class="container">
+        <div className="container">
           <div className="card-deck row">
             <div> {content}</div>
             <div className="container">

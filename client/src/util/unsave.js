@@ -5,7 +5,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-export default class AlertDialog extends Component {
+export default class Unsave extends Component {
   constructor() {
     super();
     this.state = {
@@ -27,40 +27,37 @@ export default class AlertDialog extends Component {
       open: false,
     });
   };
-
+  handleDelete = () => {
+    this.props.submitCallback(this.state.isDeleting);
+    this.setState({
+      setOpen: false,
+      open: false,
+    });
+  };
   render() {
     return (
       <>
-        <button
-          type="button"
-          className="btn btn-primary"
-          onClick={this.handleClickOpen}
-        >
-          Read more <i className="fas fa-angle-double-right"></i>
-        </button>
+        <i className="fas fa-trash" onClick={this.handleClickOpen}></i>
+
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <DialogTitle id="alert-dialog-title">
-            <h2> {this.props.title}</h2>
-          </DialogTitle>
+          <DialogTitle id="alert-dialog-title">{this.props.title}</DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-              <img src={this.props.image} className="justify-content-center" alt="book" />
-              <br />
-              {this.props.description}
+              This action cannot be undone.
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
-              Close
+            <Button onClick={this.handleClose} color="primary" autoFocus>
+              Disagree
             </Button>
-            <a href={this.props.previewLink} target="_blank" rel="noopener noreferrer">
-              <button className="btn btn-dark">Visit</button>
-            </a>
+            <Button onClick={this.handleDelete} color="primary" >
+              Agree
+            </Button>
           </DialogActions>
         </Dialog>
       </>
