@@ -2,6 +2,7 @@ const express = require('express')
 const app = express();
 const morgan = require('morgan')
 const cors = require('cors')
+const path =require('path')
 
 //db
 require('./db')
@@ -41,11 +42,20 @@ app.use(function (err, req, res, next) {
         })
 })
 
-app.listen(5050, function (err, done) {
+//build
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('client/build'));
+
+    app.get('*',(req,res)=>{
+        res.sendFile(__dirname,'client','build','index.html');  //relative path
+    })
+}
+
+app.listen(process.env.PORT || 5050, function (err, done) {
     if (err) {
         console.log('Server failed to connect');
 
     } else {
-        console.log('Server connected to 5050');
+        console.log('Server connected');
     }
 })

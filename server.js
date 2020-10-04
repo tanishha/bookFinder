@@ -6,11 +6,11 @@ var server = http.createServer(function (req, res) {
     console.log('req method>>', req.method)
 })
 
-server.listen(5050, function (err, done) {
+server.listen(process.env.PORT||5050, function (err, done) {
     if (err) {
         console.log('Server failed to connect');
 
     } else {
-        console.log('Server connected to 5050');
+        console.log('Server connected');
     }
 })
