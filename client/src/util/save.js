@@ -8,10 +8,10 @@ export default class Save extends Component {
     httpClient
       .POST("/books", this.props)
       .then((response) => {
-        notification.showSuccess("View Saved Section!");
+        notification.showSuccess("Book saved successfully!");
       })
       .catch((err) => {
-        notification.showSuccess("View Saved Section");
+        notification.showWarnings("Book already saved!!!");
       });
   };
 
