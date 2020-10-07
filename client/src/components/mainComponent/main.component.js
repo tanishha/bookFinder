@@ -6,7 +6,7 @@ import notification from "../../util/notification";
 import { Loader } from "../loader/loader.component";
 import Save from "../../util/save";
 
-const apiKey = "AIzaSyBf9U8DPeKp7vec9R6D2xohuSirRrGC4tg";
+const apiKey = process.env.REACT_APP_API_KEY_GOOGLE_BOOKS;
 
 export default class MainComponent extends Component {
   constructor() {
