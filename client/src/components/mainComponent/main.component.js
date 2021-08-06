@@ -45,6 +45,8 @@ export default class MainComponent extends Component {
         this.state.books.forEach((books) =>
           console.log("books>>>", books.volumeInfo.title)
         );
+        notification.showInfo("BOOK FOUND!");
+
       })
       .catch((err) => {
         notification.showWarnings("BOOK NOT FOUND!!!");

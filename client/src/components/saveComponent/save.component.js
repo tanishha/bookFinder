@@ -29,7 +29,7 @@ export default class SaveComponent extends Component {
     httpClient
       .DELETE(`/books/${id}`, true)
       .then((response) => {
-        notification.showInfo("Book unsaved");
+        notification.showInfo("Book unsaved!!");
         const { books } = this.state;
         books.splice(index, 1);
         this.setState({
