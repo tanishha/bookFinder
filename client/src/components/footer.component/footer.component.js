@@ -14,7 +14,7 @@ export default class FooterComponent extends Component {
             <div id="cont">
               <div className="footer_center">
                 <h3>
-                  <i className="fas fa-copyright"></i>2020 Tanisha. All rights
+                  <i className="fas fa-copyright"></i>2022 All rights
                   reserved
                 </h3>
               </div>
